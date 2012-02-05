@@ -78,3 +78,11 @@ When running `require('mocha')` I would end up with a different instance then wa
 
 `Mocha.Runner.runSuite` is patched to add a beforeEach and afterEach that invokes the sinon magic.
 See `lib/mocha-hooks.js`. 
+
+## WHY?
+
+Jasmine spoiled me.
+
+## License
+
+MIT (see LICENSE)
