@@ -4,7 +4,7 @@ var Projstrap = require('projstrap'),
 
     //Command to run tests (change this to whatever you use)
     specHelper = __dirname + '/spec/helper.js',
-    cmd = 'mocha --require ' + specHelper + ' --growl -c --reporter spec ',
+    cmd = './node_modules/mocha/bin/mocha --require ' + specHelper + ' --growl -c --reporter spec ',
     watchr,
     suite;
 

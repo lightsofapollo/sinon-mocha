@@ -25,15 +25,23 @@ describe("mocha", function(){
         return function(){};
       };
 
+      function getTitle(ctx){
+        if(ctx._test){
+          return ctx._test.title;
+        } else {
+          return ctx.title;
+        }
+      }
+
       before(function(){
 
         hooks = [];
         Hooks.beforeEach(function(){
-          hooks.push('before - ' + this.title);
+          hooks.push('before - ' + getTitle(this));
         });
 
         Hooks.afterEach(function(){
-          hooks.push('after - ' + this.title);
+          hooks.push('after - ' + getTitle(this));
         });
       });
 
