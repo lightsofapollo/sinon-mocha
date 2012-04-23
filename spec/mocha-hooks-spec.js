@@ -21,37 +21,36 @@ describe("mocha", function(){
 
     describe("hooks firing", function(){
 
-      var hooks = [], fn = function(){
-        return function(){};
-      };
-
-      function getTitle(ctx){
-        if(ctx._test){
-          return ctx._test.title;
-        } else {
-          return ctx.title;
-        }
-      }
+      var beforeEachIndex = 0,
+          afterEachIndex = 0;
 
       before(function(){
 
-        hooks = [];
         Hooks.beforeEach(function(){
-          hooks.push('before - ' + getTitle(this));
+          beforeEachIndex++;
         });
 
         Hooks.afterEach(function(){
-          hooks.push('after - ' + getTitle(this));
+          afterEachIndex++;
         });
       });
 
-      it("one", fn());
+      it("one", function(){
+        expect(beforeEachIndex).to.be(1);
+        expect(afterEachIndex).to.be(0);
+      });
 
       describe("testing nesting", function(){
-        it("two", fn());
+        it("two", function(){
+          expect(beforeEachIndex).to.be(2);
+          expect(afterEachIndex).to.be(1);
+        });
 
         describe("deep nesting", function(){
-          it("three", fn());
+          it("three", function(){
+            expect(beforeEachIndex).to.be(3);
+            expect(afterEachIndex).to.be(2);
+          });
         });
       });
 
@@ -60,15 +59,8 @@ describe("mocha", function(){
         Hooks._beforeEaches.pop();
         Hooks._afterEaches.pop();
 
-        //It should fire hooks in correct order
-        expect(hooks).to.eql([
-          'before - one',
-          'after - one',
-          'before - two',
-          'after - two',
-          'before - three',
-          'after - three'
-        ]);
+        expect(afterEachIndex).to.be(3);
+        expect(beforeEachIndex).to.be(3);
       });
 
     });

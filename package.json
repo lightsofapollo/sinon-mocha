@@ -1,6 +1,6 @@
 {
   "name": "sinon-mocha",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "James Lal <james@lightsofapollo.com>",
   "description": "Automatic restore for spies & mocks for mocha",
   "main": "./lib/sinon-mocha",
@@ -14,7 +14,7 @@
     "sinon"
   ],
   "devDependencies": {
-    "mocha"    :  "~0.12",
+    "mocha"    :  "~1.0",
     "expect.js"    :  "*",
     "sinon": "~1.3"
   },
