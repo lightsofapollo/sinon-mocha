@@ -6,7 +6,7 @@ Tested with:
 
 | **Sinon** | **Mocha** |
 | ----- | ----- |
-| 1.3   | 0.12  |
+| 1.3   | ~1.0  |
 
 As of version 0.0.1 browser support is not tested but is planned in a future version.
 
